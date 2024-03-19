@@ -1,0 +1,12 @@
+diff --git a/node_modules/react-native-collapsible/Accordion.js b/node_modules/react-native-collapsible/Accordion.js
+index b89f78a..38380f9 100644
+--- a/node_modules/react-native-collapsible/Accordion.js
++++ b/node_modules/react-native-collapsible/Accordion.js
+@@ -137,6 +137,7 @@ export default class Accordion extends Component {
+           data={sections}
+           extraData={activeSections}
+           nestedScrollEnabled={true}
++          showsVerticalScrollIndicator={false}
+           keyExtractor={keyExtractor}
+           renderItem={({ item, index }) => {
+             const section = item;

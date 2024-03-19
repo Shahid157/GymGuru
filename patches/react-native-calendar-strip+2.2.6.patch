@@ -1,0 +1,83 @@
+diff --git a/node_modules/react-native-calendar-strip/index.d.ts b/node_modules/react-native-calendar-strip/index.d.ts
+index de7c244..d517b69 100644
+--- a/node_modules/react-native-calendar-strip/index.d.ts
++++ b/node_modules/react-native-calendar-strip/index.d.ts
+@@ -35,6 +35,7 @@ interface IDayComponentProps {
+   selected?: boolean;
+   enabled: boolean;
+   showDayName?: boolean;
++  showDayNameFirstLetter?:boolean
+   showDayNumber?: boolean;
+   onDateSelected?: (event: GestureResponderEvent) => void;
+   calendarColor?: string;
+@@ -94,6 +95,7 @@ interface CalendarStripProps {
+ 
+   showMonth?: boolean;
+   showDayName?: boolean;
++  showDayNameFirstLetter?:boolean
+   showDayNumber?: boolean;
+   showDate?: boolean;
+ 
+diff --git a/node_modules/react-native-calendar-strip/src/CalendarDay.js b/node_modules/react-native-calendar-strip/src/CalendarDay.js
+index 930b0fd..4ab7e4c 100644
+--- a/node_modules/react-native-calendar-strip/src/CalendarDay.js
++++ b/node_modules/react-native-calendar-strip/src/CalendarDay.js
+@@ -21,6 +21,7 @@ class CalendarDay extends Component {
+     markedDates: PropTypes.oneOfType([PropTypes.array, PropTypes.func]),
+ 
+     showDayName: PropTypes.bool,
++    showDayNameFirstLetter:PropTypes.bool,
+     showDayNumber: PropTypes.bool,
+ 
+     calendarColor: PropTypes.string,
+@@ -68,6 +69,7 @@ class CalendarDay extends Component {
+     },
+     styleWeekend: true,
+     showDayName: true,
++    showDayNameFirstLetter:false,
+     showDayNumber: true,
+     upperCaseDays: true,
+     width: 0, // Default width and height to avoid calcSizes() *sometimes* doing Math.round(undefined) to cause NaN
+@@ -379,6 +381,7 @@ class CalendarDay extends Component {
+       weekendDateNumberStyle,
+       onDateSelected,
+       showDayName,
++      showDayNameFirstLetter,
+       showDayNumber,
+       allowDayTextScaling,
+       dayComponent: DayComponent,
+@@ -497,6 +500,14 @@ class CalendarDay extends Component {
+                 {upperCaseDays ? date.format("ddd").toUpperCase() : date.format("ddd")}
+               </Text>
+             )}
++            {showDayNameFirstLetter && (
++              <Text
++                style={[{ fontSize: dateNameFontSize }, _dateNameStyle]}
++                allowFontScaling={allowDayTextScaling}
++              >
++                {upperCaseDays ? date.format("ddd").toUpperCase().charAt(0) : date.format("ddd")}
++              </Text>
++            )}
+             {showDayNumber && (
+               <View style={_dateNumberContainerStyle}>
+                 <Text
+diff --git a/node_modules/react-native-calendar-strip/src/CalendarStrip.js b/node_modules/react-native-calendar-strip/src/CalendarStrip.js
+index fe4d62d..aefa37c 100644
+--- a/node_modules/react-native-calendar-strip/src/CalendarStrip.js
++++ b/node_modules/react-native-calendar-strip/src/CalendarStrip.js
+@@ -48,6 +48,7 @@ class CalendarStrip extends Component {
+ 
+     showMonth: PropTypes.bool,
+     showDayName: PropTypes.bool,
++    showDayNameFirstLetter:PropTypes.bool,
+     showDayNumber: PropTypes.bool,
+     showDate: PropTypes.bool,
+ 
+@@ -423,6 +424,7 @@ class CalendarStrip extends Component {
+       datesWhitelist: this.props.datesWhitelist,
+       datesBlacklist: this.props.datesBlacklist,
+       showDayName: this.props.showDayName,
++      showDayNameFirstLetter:this.props.showDayNameFirstLetter,
+       showDayNumber: this.props.showDayNumber,
+       dayComponent: this.props.dayComponent,
+       calendarColor: this.props.calendarColor,

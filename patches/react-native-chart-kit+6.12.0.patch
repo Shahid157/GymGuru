@@ -1,0 +1,49 @@
+diff --git a/node_modules/react-native-chart-kit/dist/ProgressChart.d.ts b/node_modules/react-native-chart-kit/dist/ProgressChart.d.ts
+index 9205f0a..62c72b3 100644
+--- a/node_modules/react-native-chart-kit/dist/ProgressChart.d.ts
++++ b/node_modules/react-native-chart-kit/dist/ProgressChart.d.ts
+@@ -16,6 +16,7 @@ export interface ProgressChartProps extends AbstractChartProps {
+     style?: Partial<ViewStyle>;
+     chartConfig?: AbstractChartConfig;
+     hideLegend?: boolean;
++    textPercent? : string;
+     strokeWidth?: number;
+     radius?: number;
+     withCustomBarColorFromData?: boolean;
+diff --git a/node_modules/react-native-chart-kit/dist/ProgressChart.js b/node_modules/react-native-chart-kit/dist/ProgressChart.js
+index b5221e0..a7591cb 100644
+--- a/node_modules/react-native-chart-kit/dist/ProgressChart.js
++++ b/node_modules/react-native-chart-kit/dist/ProgressChart.js
+@@ -34,7 +34,7 @@ var ProgressChart = /** @class */ (function (_super) {
+     }
+     ProgressChart.prototype.render = function () {
+         var _this = this;
+-        var _a = this.props, width = _a.width, height = _a.height, style = _a.style, data = _a.data, hideLegend = _a.hideLegend, strokeWidth = _a.strokeWidth, radius = _a.radius;
++        var _a = this.props, width = _a.width, height = _a.height, style = _a.style, data = _a.data, hideLegend = _a.hideLegend, strokeWidth = _a.strokeWidth, radius = _a.radius,textPercent=_a.textPercent;
+         var _b = style.borderRadius, borderRadius = _b === void 0 ? 0 : _b, _c = style.margin, margin = _c === void 0 ? 0 : _c, _d = style.marginRight, marginRight = _d === void 0 ? 0 : _d;
+         if (Array.isArray(data)) {
+             data = {
+@@ -111,7 +111,7 @@ var ProgressChart = /** @class */ (function (_super) {
+           <G x={this.props.width / (hideLegend ? 2 : 2.5)} y={this.props.height / 2}>
+             <G>
+               {pieBackgrounds.map(function (pie, i) {
+-            return (<Path key={Math.random()} d={pie.curves[0].sector.path.print()} strokeWidth={strokeWidth} stroke={_this.props.chartConfig.color(0.2, i)}/>);
++            return (<Path key={Math.random()} d={pie.curves[0].sector.path.print()} strokeWidth={strokeWidth} stroke={_this.props.chartConfig.color(0.8, i)}/>);
+         })}
+             </G>
+             <G>
+@@ -122,6 +122,14 @@ var ProgressChart = /** @class */ (function (_super) {
+         })}
+             </G>
+             {legend}
++            {textPercent ? (
++                <>
++               <Text x="1" fontSize="14" fontWeight="bold"
++               y="2" textAnchor="middle">{textPercent}</Text>
++                <Text x="1" fontSize="6" fontWeight="bold"
++               y="10" textAnchor="middle">of daily goals</Text>
++               </>
++            ) : null}
+           </G>
+         </Svg>
+       </View>);

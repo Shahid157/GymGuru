@@ -1,0 +1,12 @@
+diff --git a/node_modules/react-native-progress/Circle.js b/node_modules/react-native-progress/Circle.js
+index 79f0a9e..8e76d55 100644
+--- a/node_modules/react-native-progress/Circle.js
++++ b/node_modules/react-native-progress/Circle.js
+@@ -174,6 +174,7 @@ export class ProgressCircle extends Component {
+               stroke={borderColor || color}
+               strokeCap={strokeCap}
+               strokeWidth={border}
++              fill={'transparent'}
+             />
+           ) : (
+             false

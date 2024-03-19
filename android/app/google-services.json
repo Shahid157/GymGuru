@@ -1,0 +1,46 @@
+{
+  "project_info": {
+    "project_number": "976540699776",
+    "project_id": "stridistcore-24173",
+    "storage_bucket": "stridistcore-24173.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:976540699776:android:76a7a6f604c952370daa65",
+        "android_client_info": {
+          "package_name": "com.stridist.dev"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "976540699776-g5br4caltca6v6nv5d7mf56dn8700a1u.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBTbHrOEpE9pnYlkJp4x0puWwRo-SlOEas"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "976540699776-4s96htm3usfva1hcpmrh596l5l56hpjn.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "976540699776-dm3d4nfq7v63fskoumt8qd0l8jh1d23c.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.stridist.dev"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
